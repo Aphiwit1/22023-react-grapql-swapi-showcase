@@ -10,3 +10,11 @@ export interface FavoriteFilmsProps {
     data: Film[] | null;
     handleToggleFavorite: (film: Film) => void;
 }
+
+export interface StarWarsListProps {
+    data: Film[] | null;
+    loading: boolean;
+    error: string | null;
+    favorites: string[];
+    handleToggleFavorite: (film: Film) => void;
+  }
