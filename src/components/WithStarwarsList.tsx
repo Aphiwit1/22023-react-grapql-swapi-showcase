@@ -13,61 +13,51 @@ const WithStarwarsList = (Component: React.FC<StarWarsListProps>) => {
   useEffect(() => {
     const fetchStarWarsData = async () => {
       try {
-        const response = await axios.post(
-          "https://swapi-graphql.netlify.app/.netlify/functions/index",
-          {
-            query: `
-                  {
-                    allFilms {
-                      films {
-                        title
-                        director
-                        releaseDate
+        const localData = localStorage.getItem('star-wars-films-data');
+        if(localData){
+        const response = JSON.parse(localData)
+          const filmsWithFavProp = response.data.data.allFilms.films.map(
+            (film: Film) => ({
+              ...film,
+              isFav: favorites.includes(film.title), // Check if the film is in the favorites list
+            })
+          );
+  
+          setData(filmsWithFavProp);
+          setLoading(false);
+        } else {
+
+          const response = await axios.post(
+            "https://swapi-graphql.netlify.app/.netlify/functions/index",
+            {
+              query: `
+                    {
+                      allFilms {
+                        films {
+                          id
+                          title
+                          director
+                          releaseDate
+                        }
                       }
                     }
-                  }
-                `,
-          }
-        );
+                  `,
+            }
+          );
 
-        // const response = [
-        //   {
-        //     title: '1:XXXXXXXXXXXXx',
-        //     director: 'AAAAAAAAAAAA',
-        //     releaseDate: '2023-07-11'
-        //   },
-        //   {
-        //     title: '2:XXXXXXXXXXXXx',
-        //     director: 'AAAAAAAAAAAA',
-        //     releaseDate: '2023-07-11'
-        //   },
-        //   {
-        //     title: '3:XXXXXXXXXXXXx',
-        //     director: 'AAAAAAAAAAAA',
-        //     releaseDate: '2023-07-11'
-        //   },
-        //   {
-        //     title: '4:XXXXXXXXXXXXx',
-        //     director: 'AAAAAAAAAAAA',
-        //     releaseDate: '2023-07-11'
-        //   }
-        // ]
-
-        const filmsWithFavProp = response.data.data.allFilms.films.map(
-          (film: Film) => ({
-            ...film,
-            isFav: favorites.includes(film.title), // Check if the film is in the favorites list
-          })
-        );
-        // const filmsWithFavProp = response.map(
-        //   (film: Film) => ({
-        //     ...film,
-        //     isFav: favorites.includes(film.title), // Check if the film is in the favorites list
-        //   })
-        // );
-
-        setData(filmsWithFavProp);
-        setLoading(false);
+          console.log()
+          localStorage.setItem('star-wars-films-data',  JSON.stringify(response));
+          
+          const filmsWithFavProp = response.data.data.allFilms.films.map(
+            (film: Film) => ({
+              ...film,
+              isFav: favorites.includes(film.title), // Check if the film is in the favorites list
+            })
+          );
+          setData(filmsWithFavProp);
+          setLoading(false);
+        }
+       
       } catch (error) {
         setError("Error fetching data.");
         setLoading(false);
@@ -75,7 +65,7 @@ const WithStarwarsList = (Component: React.FC<StarWarsListProps>) => {
     };
 
     fetchStarWarsData();
-  }, [favorites, data]);
+  }, [favorites]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -94,7 +84,7 @@ const WithStarwarsList = (Component: React.FC<StarWarsListProps>) => {
     );
   };
 
-  const newProps: any = {
+  const newProps: StarWarsListProps = {
     data,
     loading,
     error,
