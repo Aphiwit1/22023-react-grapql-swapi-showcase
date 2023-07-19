@@ -1,10 +1,11 @@
 import React from "react";
 import { FavoriteFilmsProps } from '../interface'
 import { AiFillStar } from "react-icons/ai";
+import { WithFavoriteList } from "./WithFavoriteList";
 
-const FavoriteList:React.FC<FavoriteFilmsProps> = ({favorites, data, handleToggleFavorite}) => {
+const FavoriteList = ({favorites, data, handleToggleFavorite}: FavoriteFilmsProps) => 
 //   const { favorites, data, handleToggleFavorite } = props;
-  return (
+   (
     <>
       <section>
         <h2>Favorite Films</h2>
@@ -31,6 +32,7 @@ const FavoriteList:React.FC<FavoriteFilmsProps> = ({favorites, data, handleToggl
       </section>
     </>
   );
-};
 
-export default FavoriteList;
+
+const WrappedComponent = WithFavoriteList(FavoriteList)
+export default WrappedComponent
