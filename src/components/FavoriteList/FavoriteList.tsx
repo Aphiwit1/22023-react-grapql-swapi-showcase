@@ -4,7 +4,6 @@ import { AiFillStar } from "react-icons/ai";
 import { WithFavoriteList } from "./WithFavoriteList";
 import { BsFillBookmarkFill } from "react-icons/bs";
 
-
 const FavoriteList = ({
   favorites,
   data,
@@ -12,14 +11,12 @@ const FavoriteList = ({
 }: FavoriteFilmsProps) => (
   //   const { favorites, data, handleToggleFavorite } = props;
   <>
-    <section className="p-3 border-double border-4 border-yellow-500">
-    <h2 className="text-2xl text-center m-5">
-    
-    <span className="bg-yellow-400 p-2 ">Favorite Star Wars Films</span>
-    </h2>
-      {favorites.length === 0 ? (
-        <p>No favorite films yet.</p>
-      ) : (
+    {favorites.length !== 0 && (
+      <section className="p-3 border-double border-4 border-yellow-500">
+        <h2 className="text-2xl text-center m-5">
+          <span className="bg-yellow-400 p-2 ">Favorite Star Wars Films</span>
+        </h2>
+
         <ul className="flex flex-wrap justify-center">
           {favorites.map((favTitle: any) => {
             const favFilm = data?.find((film: Film) => film.title === favTitle);
@@ -40,10 +37,10 @@ const FavoriteList = ({
                     </div>
 
                     <div className="absolute top-2 left-2 text-yellow-400">
-                       {<BsFillBookmarkFill/>}
+                      {<BsFillBookmarkFill />}
                     </div>
 
-                    <h3 className="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">
+                    <h3 className="text-yellow-500 dark:text-yellow-500 mt-5 text-base font-medium tracking-tight">
                       {favFilm.title}
                     </h3>
                     <div className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
@@ -58,8 +55,8 @@ const FavoriteList = ({
             );
           })}
         </ul>
-      )}
-    </section>
+      </section>
+    )}
   </>
 );
 
