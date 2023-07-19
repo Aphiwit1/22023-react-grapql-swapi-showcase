@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import FavoriteList from './FavoriteList/FavoriteList';
-// import Film from './interface'
 
-// Define the type for a film object
-type Film = {
-    title: string;
-    director: string;
-    releaseDate: string;
-    // Add other properties as needed
-  };
+import { Film } from './interface'
 
-const StarwarsList = () => {
-    const [data, setData] = useState<Film[] | null>(null); // Use Film[] type here
+const StarWarsList = () => {
+    const [data, setData] = useState<Film[] | null>(null); 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [favorites, setFavorites] = useState<string[]>([]);
@@ -39,7 +32,7 @@ const StarwarsList = () => {
     
             // Add the 'isFav' property to each film object
             const filmsWithFavProp = response.data.data.allFilms.films.map(
-              (film: any) => ({
+              (film: Film) => ({
                 ...film,
                 isFav: favorites.includes(film.title), // Check if the film is in the favorites list
               })
@@ -64,16 +57,14 @@ const StarwarsList = () => {
         return <div>{error}</div>;
       }
     
-      const handleToggleFavorite = (film: any) => {
+      const handleToggleFavorite = (film: Film) => {
         setFavorites((prevFavorites) =>
           prevFavorites.includes(film.title)
             ? prevFavorites.filter((favTitle) => favTitle !== film.title)
             : [...prevFavorites, film.title]
         );
       };
-    
-
-    
+        
   return (
     <div>
         <>
@@ -81,7 +72,7 @@ const StarwarsList = () => {
       <h1>Star Wars Films</h1>
       {data && (
         <ul>
-          {data.map((film: any) => (
+          {data.map((film: Film) => (
             <li key={film.title}>
               <strong>{film.title}</strong> - {film.releaseDate}
               <button onClick={() => handleToggleFavorite(film)}>
@@ -92,13 +83,15 @@ const StarwarsList = () => {
         </ul>
       )}
     </div>
- 
     
+    {data && (
+      <FavoriteList favorites={favorites} data={data} handleToggleFavorite={handleToggleFavorite} />
+    )
 
-    <FavoriteList favorites={favorites} data={data} handleToggleFavorite={handleToggleFavorite} />
+    }
   </>
     </div>
   )
 }
 
-export default StarwarsList
+export default StarWarsList

@@ -1,12 +1,12 @@
 
 import './App.css';
-import StarwarsList from './components/StarwarsList';
+import StarWarsList from './components/StarwarsList';
 
 
 function App() {
   return (
     <div className="App">
-     <StarwarsList/>
+     <StarWarsList/>
     </div>
   );
 }

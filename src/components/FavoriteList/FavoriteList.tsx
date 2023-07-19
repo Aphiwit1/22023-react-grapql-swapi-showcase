@@ -1,7 +1,8 @@
 import React from "react";
+import { FavoriteFilmsProps } from '../interface'
 
-const FavoriteList = (props: any) => {
-  const { favorites, data, handleToggleFavorite } = props;
+const FavoriteList:React.FC<FavoriteFilmsProps> = ({favorites, data, handleToggleFavorite}) => {
+//   const { favorites, data, handleToggleFavorite } = props;
   return (
     <>
       <section>
@@ -11,13 +12,17 @@ const FavoriteList = (props: any) => {
         ) : (
           <ul>
             {favorites.map((favTitle: any) => {
-              const favFilm = data.find((film: any) => film.title === favTitle);
+              const favFilm = data?.find((film: any) => film.title === favTitle);
               return (
-                <li key={favFilm.title}>
-                  <strong>{favFilm.title}</strong> - {favFilm.releaseDate}
-                  (Director: {favFilm.director})
-                  <button onClick={() => handleToggleFavorite(favFilm)}>Remove from Favorites</button>
-                </li>
+               <>
+               { favFilm && 
+                 <li key={favFilm?.title}>
+                 <strong>{favFilm?.title}</strong> - {favFilm?.releaseDate}
+                 (Director: {favFilm?.director})
+                 <button onClick={() => handleToggleFavorite(favFilm)}>Remove from Favorites</button>
+               </li>
+               }
+               </>
               );
             })}
           </ul>
