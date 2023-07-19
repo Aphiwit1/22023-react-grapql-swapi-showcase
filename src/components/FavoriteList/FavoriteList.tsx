@@ -12,8 +12,11 @@ const FavoriteList = ({
 }: FavoriteFilmsProps) => (
   //   const { favorites, data, handleToggleFavorite } = props;
   <>
-    <section>
-      <h2>Favorite Films</h2>
+    <section className="p-3 border-double border-4 border-yellow-500">
+    <h2 className="text-2xl text-center m-5">
+    
+    <span className="bg-yellow-400 p-2 ">Favorite Star Wars Films</span>
+    </h2>
       {favorites.length === 0 ? (
         <p>No favorite films yet.</p>
       ) : (
@@ -25,7 +28,7 @@ const FavoriteList = ({
                 {favFilm && (
                   <div
                     key={favFilm.id}
-                    className="relative bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl m-5 min-w-[300px] cursor-pointer"
+                    className="relative bg-slate-700 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl m-5 min-w-[300px] cursor-pointer"
                   >
                     <div className="absolute top-2 right-2">
                       <span

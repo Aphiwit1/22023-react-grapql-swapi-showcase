@@ -25,8 +25,11 @@ const StarWarsList = ({
       </div>
 
       {/*  ALl List  */}
-      <div>
-        <h1>Star Wars Films</h1>
+      <div className="bg-slate-900 m-4">
+        <h1 className="text-2xl text-center m-5">
+    
+          <span className="bg-yellow-400 p-2 ">All Star Wars Films</span>
+          </h1>
         {data && (
           <>
             <section className="flex flex-wrap justify-center">
