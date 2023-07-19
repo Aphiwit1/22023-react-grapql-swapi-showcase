@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
-import FavoriteList from './FavoriteList/FavoriteList';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import FavoriteList from "./FavoriteList/FavoriteList";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
-import { Film } from './interface'
+
+import { Film } from "./interface";
 
 const StarWarsList = () => {
-    const [data, setData] = useState<Film[] | null>(null); 
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-    const [favorites, setFavorites] = useState<string[]>([]);
+  const [data, setData] = useState<Film[] | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [favorites, setFavorites] = useState<string[]>([]);
 
-    useEffect(() => {
-        const fetchStarWarsData = async () => {
-          try {
-            const response = await axios.post(
-              "https://swapi-graphql.netlify.app/.netlify/functions/index",
-              {
-                query: `
+  useEffect(() => {
+    const fetchStarWarsData = async () => {
+      try {
+        const response = await axios.post(
+          "https://swapi-graphql.netlify.app/.netlify/functions/index",
+          {
+            query: `
                   {
                     allFilms {
                       films {
@@ -27,71 +29,124 @@ const StarWarsList = () => {
                     }
                   }
                 `,
-              }
-            );
-    
-            // Add the 'isFav' property to each film object
-            const filmsWithFavProp = response.data.data.allFilms.films.map(
-              (film: Film) => ({
-                ...film,
-                isFav: favorites.includes(film.title), // Check if the film is in the favorites list
-              })
-            );  
-    
-            setData(filmsWithFavProp);
-            setLoading(false);
-          } catch (error) {
-            setError("Error fetching data.");
-            setLoading(false);
           }
-        };
-    
-        fetchStarWarsData();
-      }, [favorites, data]);
-
-      if (loading) {
-        return <div>Loading...</div>;
-      }
-    
-      if (error) {
-        return <div>{error}</div>;
-      }
-    
-      const handleToggleFavorite = (film: Film) => {
-        setFavorites((prevFavorites) =>
-          prevFavorites.includes(film.title)
-            ? prevFavorites.filter((favTitle) => favTitle !== film.title)
-            : [...prevFavorites, film.title]
         );
-      };
-        
+
+        // const response = [
+        //   {
+        //     title: '1:XXXXXXXXXXXXx',
+        //     director: 'AAAAAAAAAAAA',
+        //     releaseDate: '2023-07-11'
+        //   },
+        //   {
+        //     title: '2:XXXXXXXXXXXXx',
+        //     director: 'AAAAAAAAAAAA',
+        //     releaseDate: '2023-07-11'
+        //   },
+        //   {
+        //     title: '3:XXXXXXXXXXXXx',
+        //     director: 'AAAAAAAAAAAA',
+        //     releaseDate: '2023-07-11'
+        //   },
+        //   {
+        //     title: '4:XXXXXXXXXXXXx',
+        //     director: 'AAAAAAAAAAAA',
+        //     releaseDate: '2023-07-11'
+        //   }
+        // ]
+
+        const filmsWithFavProp = response.data.data.allFilms.films.map(
+          (film: Film) => ({
+            ...film,
+            isFav: favorites.includes(film.title), // Check if the film is in the favorites list
+          })
+        );
+
+
+        // const filmsWithFavProp = response.map(
+        //   (film: Film) => ({
+        //     ...film,
+        //     isFav: favorites.includes(film.title), // Check if the film is in the favorites list
+        //   })
+        // );
+
+        setData(filmsWithFavProp);
+        setLoading(false);
+      } catch (error) {
+        setError("Error fetching data.");
+        setLoading(false);
+      }
+    };
+
+    fetchStarWarsData();
+  }, [favorites, data]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  const handleToggleFavorite = (film: Film) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.includes(film.title)
+        ? prevFavorites.filter((favTitle) => favTitle !== film.title)
+        : [...prevFavorites, film.title]
+    );
+  };
+
   return (
-    <div>
-        <>
-    <div>
-      <h1>Star Wars Films</h1>
-      {data && (
-        <ul>
-          {data.map((film: Film) => (
-            <li key={film.title}>
-              <strong>{film.title}</strong> - {film.releaseDate}
-              <button onClick={() => handleToggleFavorite(film)}>
-                {film.isFav ? "Remove " : "Add to Favorites"}
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-    
-    {data && (
-      <FavoriteList favorites={favorites} data={data} handleToggleFavorite={handleToggleFavorite} />
-    )
+    <>
+      <section className="flex flex-col items-center p-4">
+        {/* All List */}
+        {/* <div>
+          <h1>Star Wars Films</h1>
+          {data && (
+            <ul>
+              {data.map((film: Film) => (
+                <li key={film.title}>
+                  <strong>{film.title}</strong> - {film.releaseDate}
+                  <button onClick={() => handleToggleFavorite(film)}>
+                    {film.isFav ?  <AiFillStar/> : <AiOutlineStar/>}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div> */}
 
-    }
-  </>
-    </div>
-  )
-}
+       <div>
+          <h1>Star Wars Films</h1>
+          {data && (
+            <ul>
+              {data.map((film: Film) => (
+                <li key={film.title}>
+                  <strong>{film.title}</strong> - {film.releaseDate}
+                  <button onClick={() => handleToggleFavorite(film)}>
+                    {film.isFav ?  <AiFillStar/> : <AiOutlineStar/>}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div> 
 
-export default StarWarsList
+        {/* Fav List */}
+        <div>
+        {data && (
+          <FavoriteList
+            favorites={favorites}
+            data={data}
+            handleToggleFavorite={handleToggleFavorite}
+          />
+        )}
+        </div>
+        
+      </section>
+    </>
+  );
+};
+
+export default StarWarsList;

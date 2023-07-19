@@ -1,5 +1,6 @@
 import React from "react";
 import { FavoriteFilmsProps } from '../interface'
+import { AiFillStar } from "react-icons/ai";
 
 const FavoriteList:React.FC<FavoriteFilmsProps> = ({favorites, data, handleToggleFavorite}) => {
 //   const { favorites, data, handleToggleFavorite } = props;
@@ -19,7 +20,7 @@ const FavoriteList:React.FC<FavoriteFilmsProps> = ({favorites, data, handleToggl
                  <li key={favFilm?.title}>
                  <strong>{favFilm?.title}</strong> - {favFilm?.releaseDate}
                  (Director: {favFilm?.director})
-                 <button onClick={() => handleToggleFavorite(favFilm)}>Remove from Favorites</button>
+                 <button onClick={() => handleToggleFavorite(favFilm)}><AiFillStar/></button>
                </li>
                }
                </>
