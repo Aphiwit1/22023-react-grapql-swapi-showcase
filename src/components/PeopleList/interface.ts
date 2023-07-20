@@ -1,4 +1,4 @@
-export interface Person {
+export interface People {
     id: string;
     gender: string;
     name: string;
@@ -7,6 +7,12 @@ export interface Person {
 
   export interface PeopleListProps {
     favorites: string[];
-    data: Person[] | null;
-    handleToggleFavorite: (film: Person) => void;
+    data: People[] | null;
+    handleToggleFavorite: (film: People) => void;
+}
+
+export interface AllPeopleResponse {
+  allPeople: {
+    people: People[];
+  };
 }

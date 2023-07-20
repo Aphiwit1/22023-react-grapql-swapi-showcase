@@ -1,7 +1,7 @@
-import { Person } from "../PeopleList/interface";
+import { People } from "../PeopleList/interface";
 
 export interface FavoritePeopleProps {
     favorites: string[];
-    data: Person[] | null;
-    handleToggleFavorite: (people: Person) => void;
+    data: People[] | null;
+    handleToggleFavorite: (people: People) => void;
 }

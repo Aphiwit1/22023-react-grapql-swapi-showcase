@@ -14,3 +14,9 @@ export interface StarWarsListProps {
     handleToggleFavorite: (film: Film) => void;
   }
 
+export interface AllFilmsResponse {
+    allFilms: {
+      films: Film[];
+    };
+  }
+
