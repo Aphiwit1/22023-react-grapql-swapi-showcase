@@ -8,8 +8,8 @@ export interface Film {
 
 export interface StarWarsListProps {
     data: Film[] | null;
-    loading: boolean;
-    error: string | null;
+    loading?: boolean;
+    error?: string | null;
     favorites: string[];
     handleToggleFavorite: (film: Film) => void;
   }
