@@ -1,7 +1,8 @@
 import React from 'react';
 import { ComponentProps } from './interface';
 
-const WithNavbar = (Component: React.FC<ComponentProps>) => {
+
+const WithNavbar = (Component: React.FC) => {
   const Hoc = (props:ComponentProps) => { 
     const newProps = {
         ...props,
