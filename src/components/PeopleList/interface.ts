@@ -5,7 +5,7 @@ export interface Person {
     isFav?:boolean;
   }
 
-  export interface FavoritePeopleProps {
+  export interface PeopleListProps {
     favorites: string[];
     data: Person[] | null;
     handleToggleFavorite: (film: Person) => void;

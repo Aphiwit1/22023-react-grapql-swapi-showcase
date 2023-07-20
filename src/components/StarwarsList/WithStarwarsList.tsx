@@ -76,7 +76,6 @@ const WithStarwarsList = (Component: React.FC<StarWarsListProps>) => {
     return <div>{error}</div>;
   }
 
-  
   const handleToggleFavorite = (film: Film) => {
     setFavorites((prevFavorites) =>
       prevFavorites.includes(film.title)
