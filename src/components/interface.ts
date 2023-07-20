@@ -6,12 +6,6 @@ export interface Film {
     isFav?: boolean;
 }
 
-export interface FavoriteFilmsProps {
-    favorites: string[];
-    data: Film[] | null;
-    handleToggleFavorite: (film: Film) => void;
-}
-
 export interface StarWarsListProps {
     data: Film[] | null;
     loading: boolean;
@@ -19,3 +13,4 @@ export interface StarWarsListProps {
     favorites: string[];
     handleToggleFavorite: (film: Film) => void;
   }
+

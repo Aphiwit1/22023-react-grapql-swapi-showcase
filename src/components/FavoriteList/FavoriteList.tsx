@@ -1,8 +1,8 @@
-import React from "react";
-import { FavoriteFilmsProps, Film } from "../interface";
+import { FavoriteFilmsProps } from "./interface";
 import { AiFillStar } from "react-icons/ai";
 import { WithFavoriteList } from "./WithFavoriteList";
 import { BsFillBookmarkFill } from "react-icons/bs";
+import { Film } from "../interface";
 
 const FavoriteList = ({
   favorites,
