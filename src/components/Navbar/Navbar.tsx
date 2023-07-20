@@ -23,15 +23,15 @@ const Navbar = () => (
 
         {/*  Heading Caption */}
         <div className="flex-1 flex items-center justify-end">
-          <div className="text-left pr-16">
+          <div className="text-center sm:text-left pr-0 sm:pr-16 mx-auto sm:mx-0">
             <h1 className="text-6xl sm:text-[60px] font-semibold">Hello<br></br>StarWars</h1>
             <p className="font-light text-xl mt-5">Lorem, ipsum dolor sit amet consectetur adipisicing <br></br>elit. Itaque inventore commodi amet dolore architecto<br></br>Itaque inventore commodi amet dolore architecto</p>
-            <a
+            {/* <a
               className="px-5 py-3 inline-block bg-transparent hover:bg-yellow-500 border-[3px] border-yellow-500 transition-colors mt-10"
               href=""
             >
               Get Started
-            </a>
+            </a> */}
           </div>
         </div>
       </section>
