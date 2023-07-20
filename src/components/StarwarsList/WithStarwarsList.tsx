@@ -1,12 +1,12 @@
 // import { FavoriteFilmsProps } from '../interface';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Film, StarWarsListProps } from "./interface";
+import { Film, StarWarsListProps } from "../interface";
 
 
 const WithStarwarsList = (Component: React.FC<StarWarsListProps>) => {
   const Hoc = () => { 
-    const [data, setData] = useState<Film[] | null>(null);
+  const [data, setData] = useState<Film[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<string[]>([]);

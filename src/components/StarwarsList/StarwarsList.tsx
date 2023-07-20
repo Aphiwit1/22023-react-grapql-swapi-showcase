@@ -1,7 +1,7 @@
-import FavoriteList from "./FavoriteList/FavoriteList";
+import FavoriteList from "../FavoriteList/FavoriteList";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
-import { Film, StarWarsListProps } from "./interface";
+import { Film, StarWarsListProps } from "../interface";
 import { WithStarwarsList } from "./WithStarwarsList";
 
 const StarWarsList = ({

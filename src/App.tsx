@@ -1,8 +1,9 @@
 
 import './App.css';
-import StarWarsList from './components/StarwarsList';
+import StarWarsList from './components/StarwarsList/StarwarsList';
 import Navbar from './components/Navbar/Navbar';
 import { CSSProperties } from 'react';
+import PeopleList from './components/PeopleList/PeopleList';
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
     <div className="App" >
       <Navbar/>
      <StarWarsList/>
-   
+     <PeopleList/>
     </div>
   );
 }
