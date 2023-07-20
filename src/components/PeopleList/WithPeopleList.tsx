@@ -4,7 +4,6 @@ import axios from "axios";
 
 const WithPeopleList = (Component: React.FC<PeopleListProps>) => {
   const Hoc = () => { 
-
     const [data, setData] = useState<Person[] | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -70,7 +69,7 @@ const WithPeopleList = (Component: React.FC<PeopleListProps>) => {
     const handleToggleFavorite = (film: Person) => {
       setFavorites((prevFavorites) =>
         prevFavorites.includes(film.id)
-          ? prevFavorites.filter((favTitle) => favTitle !== film.id)
+          ? prevFavorites.filter((favId) => favId !== film.id)
           : [...prevFavorites, film.id]
       );
     };
