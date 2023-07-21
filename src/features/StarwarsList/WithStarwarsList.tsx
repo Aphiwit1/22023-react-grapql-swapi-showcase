@@ -18,7 +18,7 @@ const WithStarwarsList = (Component: React.FC<StarWarsListProps>) => {
             const filmsWithFavProp = response.allFilms.films.map(
               (film: Film) => ({
                 ...film,
-                isFav: favorites.includes(film.title),
+                isFav: favorites.includes(film.id),
               })
             );
 
@@ -51,7 +51,7 @@ const WithStarwarsList = (Component: React.FC<StarWarsListProps>) => {
             const filmsWithFavProp = response.allFilms.films.map(
               (film: Film) => ({
                 ...film,
-                isFav: favorites.includes(film.title),
+                isFav: favorites.includes(film.id),
               })
             );
             setData(filmsWithFavProp);
