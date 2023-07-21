@@ -27,7 +27,7 @@ const PeopleFavoriteList = ({
                   {favPeople && (
                     <div
                       key={'fav' + favPeople.id}
-                      className="relative bg-slate-700 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl m-5 min-w-[300px] cursor-pointer"
+                      className="relative bg-slate-700 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl m-5 min-w-[300px] cursor-pointer lightSaberYellow"
                     >
                       <div className="absolute top-2 right-2">
                         <span
