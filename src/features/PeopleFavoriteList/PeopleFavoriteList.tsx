@@ -1,5 +1,5 @@
 import { FavoritePeopleProps } from './interface';
-import { Person } from '../PeopleList/interface';
+import { People } from '../PeopleList/interface';
 import { WithPeopleFavoriteList } from './WithPeopleFavoriteList';
 import { AiFillStar } from "react-icons/ai";
 import { BsFillBookmarkFill } from "react-icons/bs";
@@ -18,16 +18,16 @@ const PeopleFavoriteList = ({
           </h2>
 
           <ul className="flex flex-wrap justify-center">
-            {favorites.map((favTitle: any) => {
+            {favorites.map((favId: any) => {
               const favPeople = data?.find(
-                (film: Person) => film.id === favTitle
+                (people: People) => people.id === favId
               );
               return (
                 <>
                   {favPeople && (
                     <div
-                      key={favPeople.id}
-                      className="relative bg-slate-700 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl m-5 min-w-[300px] cursor-pointer"
+                      key={'fav' + favPeople.id}
+                      className="relative bg-slate-700 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl m-5 min-w-[300px] cursor-pointer lightSaberYellow"
                     >
                       <div className="absolute top-2 right-2">
                         <span

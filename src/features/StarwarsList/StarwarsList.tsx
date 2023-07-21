@@ -3,6 +3,12 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 import { Film, StarWarsListProps } from "../interface";
 import { WithStarwarsList } from "./WithStarwarsList";
+import styled from "styled-components";
+
+const lightSaberClass = styled.button`
+  border: 3px solid #00f0ff;
+  box-shadow: 0 0 15px #00f0ff,inset 0 0 15px #00f0ff;
+`;
 
 const StarWarsList = ({
   data,
@@ -33,7 +39,7 @@ const StarWarsList = ({
               {data.map((film: Film) => (
                 <div
                   key={film.id}
-                  className="relative bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl m-5 min-w-[300px] cursor-pointer"
+                  className="relative bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl m-5 min-w-[300px] cursor-pointer lightSaberBlueClass"
                 >
                   <div className="absolute top-2 right-2">
                     <span

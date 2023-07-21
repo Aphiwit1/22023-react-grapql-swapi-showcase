@@ -1,8 +1,8 @@
 
 import './App.css';
-import StarWarsList from './components/StarwarsList/StarwarsList';
-import Navbar from './components/Navbar/Navbar';
-import PeopleList from './components/PeopleList/PeopleList';
+import StarWarsList from './features/StarwarsList/StarwarsList';
+import Navbar from './features/Navbar/Navbar';
+import PeopleList from './features/PeopleList/PeopleList';
 
 
 function App() {

@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 } */
+
+.lightSaberBlue {
+  border: 3px solid #00f0ff;
+  box-shadow: 0 0 15px #00f0ff,inset 0 0 15px #00f0ff;
+}
+
+.lightSaberYellow {
+  border: 3px solid #fbcc11;
+  box-shadow: 0 0 15px #fbcc11,inset 0 0 15px #fbcc11;
+}
+
+
+.lightSaberBlueClass,.lightSaberYellowClass  {
+  border: 3px solid transparent;
+}
+.lightSaberBlueClass:hover {
+  border: 3px solid #00f0ff;
+  box-shadow: 0 0 15px #00f0ff,inset 0 0 15px #00f0ff;
+}
+
+.lightSaberYellowClass:hover {
+  border: 3px solid #fbcc11;
+  box-shadow: 0 0 15px #fbcc11,inset 0 0 15px #fbcc11;
+}
+
