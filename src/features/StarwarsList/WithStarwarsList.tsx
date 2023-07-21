@@ -76,9 +76,9 @@ const WithStarwarsList = (Component: React.FC<StarWarsListProps>) => {
 
     const handleToggleFavorite = (film: Film) => {
       setFavorites((prevFavorites) =>
-        prevFavorites.includes(film.title)
-          ? prevFavorites.filter((favTitle) => favTitle !== film.title)
-          : [...prevFavorites, film.title]
+        prevFavorites.includes(film.id)
+          ? prevFavorites.filter((favId) => favId !== film.id)
+          : [...prevFavorites, film.id]
       );
     };
 

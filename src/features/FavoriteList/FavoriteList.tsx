@@ -18,8 +18,8 @@ const FavoriteList = ({
         </h2>
 
         <ul className="flex flex-wrap justify-center">
-          {favorites.map((favTitle: any) => {
-            const favFilm = data?.find((film: Film) => film.title === favTitle);
+          {favorites.map((id: any) => {
+            const favFilm = data?.find((film: Film) => film.id === id);
             return (
               <>
                 {favFilm && (
