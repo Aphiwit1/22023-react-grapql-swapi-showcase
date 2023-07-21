@@ -5,6 +5,7 @@ import { Film, StarWarsListProps } from "../interface";
 import { WithStarwarsList } from "./WithStarwarsList";
 import styled from "styled-components";
 
+// ยังหาวิธีใช้แบบ Style component ไม่ได้ ขอคอมเม้นไว้ก่อนค
 const lightSaberClass = styled.button`
   border: 3px solid #00f0ff;
   box-shadow: 0 0 15px #00f0ff,inset 0 0 15px #00f0ff;
